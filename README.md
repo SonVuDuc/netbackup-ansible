@@ -1,10 +1,10 @@
-# NetBackup Ansible
+# NETBACKUP ANSIBLE FOR AUTOMATION INSTALL AGENT
 
-This project installs NetBackup Client using Ansible.  
-Make sure to update the following values:There are some values you need to update to run successfully in your environment:
+## This project installs NetBackup Client using Ansible (This version only works on RHEL 7 + Oracle Linux 7).
 
+Make sure to update the following values to run successfully in your environment:
 
-The NBAnswser is required for install Netbackup 
+### 1. The NBInstallAnswer.conf file is required for install Netbackup, you need to modify it first
 ```
 ACCEPT_EULA=yes
 MACHINE_ROLE=CLIENT
@@ -17,3 +17,17 @@ AUTHORIZATION_TOKEN=<Generated Token from Netbackup Master>
 CA_CERTIFICATE_FINGERPRINT=<SHA-256 from Netbackup Master>
 INCLUDE_JAVA_GUI_AND_JRE=EXCLUDE
 ```
+
+
+### 2.1 Make sure to change these NFS values:
+
+I use NFS server to export Netbackup agent installer to all client, so you need to build your own NFS server. 
+
+```
+nfs_server: 10.1.29.161
+nfs_share: /nfs-share
+mount_point: /mnt/netbackup
+```
+
+
+
