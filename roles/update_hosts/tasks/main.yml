@@ -1,0 +1,13 @@
+#- name: add nbu master to client hosts file
+#  ansible.builtin.lineinfile:
+#    path: /etc/hosts
+#    line: "{{ item }}"
+#    state: present
+#    create: yes
+#  loop: "{{ host_entries }}"
+
+- name: Add hostname to hosts file
+  blockinfile:
+    path: /etc/hosts
+    block: "{{ lookup('template', 'hosts_block.j2') }}"
+    marker: "# {mark} HOSTNAME FOR NETBACKUP - NETBACKUP"

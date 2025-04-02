@@ -1,0 +1,11 @@
+- name: Create directory for Netbackup package
+  file:
+    path: "{{ destination_path }}"
+    state: directory
+    mode: '0755'
+
+- name: Upload Netbackup package from NFS
+  copy:
+    src: "{{ nfs_mount_path }}/{{ netbackup_package_name }}"
+    dest: "{{ destination_path }}/"
+    remote_src: yes

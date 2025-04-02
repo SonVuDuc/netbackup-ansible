@@ -1,0 +1,18 @@
+- name: Create and send NBAnswer for each client
+  template:
+    src: nbclient.answer.j2
+    dest: "{{ tmp_path }}/NBInstallAnswer.conf"
+    mode: '0644'
+- name: Install NetBackup RPMs in order
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "{{ netbackup_rpm_dir }}/VRTSnbpck.rpm"
+    - "{{ netbackup_rpm_dir }}/VRTSpbx.rpm"
+    - "{{ netbackup_rpm_dir }}/VRTSnbclt.rpm"
+    - "{{ netbackup_rpm_dir }}/VRTSnbclibs.rpm"
+    - "{{ netbackup_rpm_dir }}/VRTSnbjre.rpm"
+    - "{{ netbackup_rpm_dir }}/VRTSnbjava.rpm"
+    - "{{ netbackup_rpm_dir }}/VRTSpddea.rpm"
+    - "{{ netbackup_rpm_dir }}/VRTSnbcfg.rpm"

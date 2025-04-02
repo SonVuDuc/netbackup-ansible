@@ -1,0 +1,17 @@
+- name: Install NFS package
+  package:
+    name: nfs-utils
+    state: present
+
+- name: Create mount directory
+  file:
+    path: "{{ mount_point }}"
+    state: directory
+
+- name: Mount NFS share
+  mount:
+    path: "{{ mount_point }}"
+    src: "{{ nfs_server }}:{{ nfs_share }}"
+    fstype: nfs
+    opts: defaults
+    state: mounted

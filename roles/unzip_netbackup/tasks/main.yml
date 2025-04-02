@@ -1,0 +1,3 @@
+- name: Unzip Netbackup package
+  shell: |
+    tar -xzvf {{ destination_path }}/{{ netbackup_package_name }} -C {{ destination_path }}

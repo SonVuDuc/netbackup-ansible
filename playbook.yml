@@ -1,0 +1,15 @@
+- name: Add Hostname information to each hosts file
+  hosts: netbackup-all
+  become: true
+  gather_facts: true 
+  roles:
+    - update_hosts
+
+- name: Installing Netbackup Agent - RHEL 7 - OL 7
+  hosts: netbackup-client
+  become: true
+  roles:
+    - mount_netbackup
+    - upload_netbackup
+    - unzip_netbackup
+    - install_netbackup
