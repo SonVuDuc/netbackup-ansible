@@ -18,8 +18,21 @@ CA_CERTIFICATE_FINGERPRINT=<SHA-256 from Netbackup Master>
 INCLUDE_JAVA_GUI_AND_JRE=EXCLUDE
 ```
 
+### 2. Edit your inventory file
 
-### 2.1 Make sure to change these NFS values:
+Add client you would like to install in sector [netbackup-client]
+
+```
+[netbackup-all]
+nbu-client-02.svlab.com ansible_user=ansible ansible_ssh_private_key_file=~/.ssh/id_rsa
+cam-nbu-master
+cam-nbu-media
+
+[netbackup-client]
+nbu-client-02.svlab.com ansible_user=ansible ansible_ssh_private_key_file=~/.ssh/id_rsa
+```
+
+### 3.Make sure to change these NFS values:
 
 I use NFS server to export Netbackup agent installer to all client, so you need to build your own NFS server. 
 
