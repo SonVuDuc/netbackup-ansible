@@ -20,7 +20,7 @@ INCLUDE_JAVA_GUI_AND_JRE=EXCLUDE
 
 ### 2. Edit your inventory file
 
-Add client you would like to install in sector [netbackup-client]
+Add clients you would like to install in sector [netbackup-client]
 
 ```
 [netbackup-all]
@@ -30,6 +30,14 @@ cam-nbu-media
 
 [netbackup-client]
 nbu-client-02.svlab.com ansible_user=ansible ansible_ssh_private_key_file=~/.ssh/id_rsa
+```
+
+netbackup-ansible/roles/update_hosts/vars/main.yml
+
+```
+host_entries:
+  - "10.1.29.87 cam-nbu-master"
+  - "10.1.29.88 cam-nbu-media"
 ```
 
 ### 3.Make sure to change these NFS values:
